@@ -1,0 +1,79 @@
+.campaign-date{
+    margin: 0;
+}
+.campaign-duration{
+    margin: 0;
+    font-size: .8rem;
+    color: #999;
+}
+.campaign-name{
+    margin: 0;
+}
+.campaign-region{
+    color: #999;
+}
+.campaign-pricing, .campaign-csv, .campaign-report, .campaign-schedule{
+    /* font-size: .8rem; */
+    color: #999;
+}
+.campaign-pricing:hover, .campaign-csv:hover, .campaign-report:hover, .campaign-schedule:hover{
+    /* font-size: .8rem; */
+    cursor: pointer;
+    color: black;
+}
+.campaign-image{
+    height: 30px;
+    display: inline-block;
+}
+.campaign-image+div{
+    margin-left: 10px;
+    display: inline-block;
+}
+.campaign-inline-icons{
+    height: 20px;
+    vertical-align: bottom;
+    display: inline;
+    margin-right: 10px;
+}
+.campaign-inline-icons{
+    margin-left: 15px;
+}
+.campaign-pricing:first-child .campaign-inline-icons{
+    margin-left: 0px;
+}
+.campaign-csv:first-child .campaign-inline-icons{
+    margin-left: 0px;
+}
+.react-datepicker-wrapper{
+    display: inline-block;
+}
+.campaign-pricing-image{
+    display: inline-block;
+}
+.campaign-pricing-image+div{
+    margin-left: 10px;
+    display: inline-block;
+}
+.campaign-pricing-heading{
+    font-size: x-large;
+    margin: 20px 0;
+    font-weight: bold;
+}
+.campaign-pricing-price-container{
+    width: 100%;
+}
+.campaign-pricing-price-container>p:first-of-type{
+    float: left;
+}
+.campaign-pricing-price-container>p:last-of-type{
+    float: right;
+    font-weight: bold;
+}
+.campaign-pricing-close-button{
+    border: solid 2px #000;
+    color: #000;
+    padding: 10px;
+    width: 100px;
+    text-align: center;
+    margin: 50px auto 0 auto;
+}

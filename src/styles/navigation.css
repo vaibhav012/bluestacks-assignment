@@ -1,0 +1,33 @@
+.body-container{
+    padding: 5vh 15vw;
+}
+.ui.tab.active{
+    padding: 0;
+    border: 0;
+}
+.ui.secondary.pointing.menu {
+    border-bottom: 3px solid rgba(34,36,38,.15)
+}
+.ui.secondary.pointing.menu .item {
+    border-bottom-width: 3px;
+    margin: 0px 0 -3px;
+}
+@media (max-width: 1080px){
+    .body-container{
+        padding: 5vh 5vw;
+    }
+}
+@media (max-width: 768px){
+    .body-container{
+        /* padding: 0; */
+    }
+}
+@media (max-width: 640px){
+    .body-container{
+        padding: 0;
+    }
+    h1{
+        text-align: center;
+        margin: 1vh 0;
+    }
+}
