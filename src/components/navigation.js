@@ -4,6 +4,7 @@ import Campaigns from './campaigns.js';
 import '../styles/navigation.css';
 import Firebase from "firebase";
 import config from "../config.js";
+import Strings from '../helpers/localization.js'
 
 class Navigation extends React.Component {
     constructor(props){
@@ -78,19 +79,19 @@ class Navigation extends React.Component {
     render(){
         const panes = [
             {
-                menuItem: 'Upcoming Campaigns', render: () => <Tab.Pane>
+                menuItem: Strings.upcoming_campaigns, render: () => <Tab.Pane>
                 <Campaigns campaigns={this.state.campaigns.filter((campaign) => campaign.duration < 0)}
                 dateChange={this.dateChange}/>
                 </Tab.Pane>
             },
             {
-                menuItem: 'Live Campaigns', render: () => <Tab.Pane>
+                menuItem: Strings.live_campaigns, render: () => <Tab.Pane>
                 <Campaigns campaigns={this.state.campaigns.filter((campaign) => campaign.duration === 0)}
                 dateChange={this.dateChange}/>
                 </Tab.Pane>
             },
             {
-                menuItem: 'Past Campaigns', render: () => <Tab.Pane>
+                menuItem: Strings.past_campaigns, render: () => <Tab.Pane>
                 <Campaigns campaigns={this.state.campaigns.filter((campaign) => campaign.duration > 0)}
                 dateChange={this.dateChange}/>
                 </Tab.Pane>

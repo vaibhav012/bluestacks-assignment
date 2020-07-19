@@ -2,6 +2,9 @@
     height: 10vh;
     padding: 0 15vw;
     background: #1f2640;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .header-icon{
     height: 10vh;

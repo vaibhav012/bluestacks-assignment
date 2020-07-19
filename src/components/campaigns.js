@@ -4,6 +4,7 @@ import '../styles/campaigns.css';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import CustomDatepicker from "./custom-datepicker";
+import Strings from '../helpers/localization.js'
 
 class Campaigns extends React.Component {
     constructor(props){
@@ -12,12 +13,6 @@ class Campaigns extends React.Component {
         this.state = {selectedCampaign:{price:[]}}
     }
     componentDidMount(){
-    }
-    shouldComponentUpdate(props, state){
-        props.campaigns.forEach((item, i) => {
-            this.inputElement[i] = React.createRef();
-        });
-        return true;
     }
     showPricingModal(index) {
         this.setState({
@@ -31,10 +26,10 @@ class Campaigns extends React.Component {
                 <Table singleLine>
                     <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell>DATE</Table.HeaderCell>
-                            <Table.HeaderCell>CAMPAIGN</Table.HeaderCell>
-                            <Table.HeaderCell>VIEW</Table.HeaderCell>
-                            <Table.HeaderCell>ACTIONS</Table.HeaderCell>
+                            <Table.HeaderCell>{Strings.date}</Table.HeaderCell>
+                            <Table.HeaderCell>{Strings.campaign}</Table.HeaderCell>
+                            <Table.HeaderCell>{Strings.view}</Table.HeaderCell>
+                            <Table.HeaderCell>{Strings.actions}</Table.HeaderCell>
                         </Table.Row>
                     </Table.Header>
 
@@ -42,31 +37,31 @@ class Campaigns extends React.Component {
                     {
                         this.props.campaigns.map((campaign, index) => (
                             <Table.Row key={index}>
-                                <Table.Cell unstackable>
+                                <Table.Cell>
                                     <p className="campaign-date">{campaign.dateShow}</p>
                                     <p className="campaign-duration">{Math.abs(campaign.duration) + " " + (campaign.duration > 0 ? "Days Ago" : "Days Ahead")} </p>
                                 </Table.Cell>
-                                <Table.Cell unstackable>
+                                <Table.Cell>
                                     <img src={campaign.image_url} className="campaign-image" alt="campaign-logo"/>
                                     <div>
                                         <p className="campaign-name">{campaign.name}</p>
                                         <p className="campaign-region">{campaign.region}</p>
                                     </div>
                                 </Table.Cell>
-                                <Table.Cell unstackable>
+                                <Table.Cell>
                                     <span className="campaign-pricing" onClick={() => this.showPricingModal(index)}>
-                                        <img src="./price.png" className="campaign-inline-icons" alt="campaign-pricingicon"/>
-                                        View Pricing
+                                        <img src="./icons/price.png" className="campaign-inline-icons" alt="campaign-pricingicon"/>
+                                        {Strings.viewPricing}
                                     </span>
                                 </Table.Cell>
-                                <Table.Cell stackable>
+                                <Table.Cell>
                                     <span className="campaign-csv">
-                                        <img src="./file.png" className="campaign-inline-icons" alt="campaign-csvicon"/>
-                                        CSV
+                                        <img src="./icons/file.png" className="campaign-inline-icons" alt="campaign-csvicon"/>
+                                        {Strings.csv}
                                     </span>
                                     <span className="campaign-report">
-                                        <img src="./statistics-report.png" className="campaign-inline-icons" alt="campaign-reporticon"/>
-                                        Report
+                                        <img src="./icons/statistics-report.png" className="campaign-inline-icons" alt="campaign-reporticon"/>
+                                        {Strings.report}
                                     </span>
                                     <DatePicker
                                         selected={new Date(campaign.createdOn)}
@@ -82,7 +77,7 @@ class Campaigns extends React.Component {
                 {
                     this.props.campaigns.length === 0
                     ?
-                    <Message style={{textAlign:'center'}}><Message.Header>No campaigns in this category! CHECK BACK LATER</Message.Header></Message>
+                    <Message style={{textAlign:'center'}}><Message.Header>{Strings.no_campaigns}</Message.Header></Message>
                     :
                     null
                 }
@@ -93,7 +88,7 @@ class Campaigns extends React.Component {
                             <p className="campaign-pricing-name">{this.state.selectedCampaign.name}</p>
                             <p className="campaign-pricing-region">{this.state.selectedCampaign.region}</p>
                         </div>
-                        <p className="campaign-pricing-heading">Pricing</p>
+                        <p className="campaign-pricing-heading">{Strings.viewPricing}</p>
                         {
                             this.state.selectedCampaign.price.map((pricing) => (
                                 <div className="campaign-pricing-price-container">
@@ -102,7 +97,7 @@ class Campaigns extends React.Component {
                                 </div>
                             ))
                         }
-                        <div className="campaign-pricing-close-button" onClick={() => this.setState({showPricing: false})}>CLOSE</div>
+                        <div className="campaign-pricing-close-button" onClick={() => this.setState({showPricing: false})}>{Strings.close}</div>
                     </Modal.Content>
                 </Modal>
             </div>
