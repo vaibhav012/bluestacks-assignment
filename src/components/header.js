@@ -4,10 +4,6 @@ import '../styles/header.css';
 import {Dropdown} from 'semantic-ui-react';
 
 function Header(props) {
-    function changeLanguage(e, data){
-        alert(data.value)
-    }
-
     var options=[
         { key: 1, text: 'English', value: 'en' },
         { key: 2, text: 'हिन्दी', value: 'hi' },

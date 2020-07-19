@@ -15,7 +15,9 @@ let strings = new LocalizedStrings({
         past_campaigns:"Past Campaigns",
         manage_campaigns:"Manage Campaigns",
         no_campaigns:"No campaigns in this category! CHECK BACK LATER",
-        close:"CLOSE"
+        close:"CLOSE",
+        days_ahead: "Days Ahead",
+        days_ago: "Days Ago",
     },
     hi: {
         date:"तारीख",
@@ -31,7 +33,9 @@ let strings = new LocalizedStrings({
         past_campaigns:"पिछले अभियान",
         manage_campaigns:"अभियान प्रबंधित करें",
         no_campaigns:"इस श्रेणी में कोई अभियान नहीं! बाद में जांचें",
-        close:"बंद करे"
+        close:"बंद करे",
+        days_ahead: "दिनों के बाद",
+        days_ago: "दिन पहले",
     }
 });
 

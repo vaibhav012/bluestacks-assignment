@@ -21,6 +21,7 @@ class Navigation extends React.Component {
     }
     componentDidMount(){
         let campaigns = [];
+        //Get Campaigns from database, parse date and duaration and save to state.
         let ref = Firebase.database().ref("campaigns/");
         ref.on("value", snapshot => {
             campaigns = snapshot.val();
@@ -33,12 +34,7 @@ class Navigation extends React.Component {
             console.error(error);
         });
     }
-    tabChange = (event, value) => {
-        console.log(event)
-        this.setState({
-            value: value
-        })
-    }
+    //Format date and caldulate duration for each campaign
     parseCampaigns(campaigns){
         return campaigns.map((campaign, index) => {
             return {
@@ -49,12 +45,14 @@ class Navigation extends React.Component {
             }
         })
     }
+    //Format date as required
     formatDate(date){
         date = new Date(date);
         let month = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"]
         let datePrint = month[date.getMonth()] + " " + date.getFullYear() + ", " + date.getDate();
         return datePrint;
     }
+    //Calculate date duration from today
     getDateDuration(date){
         let now = new Date();
         date = new Date(date);
@@ -63,20 +61,24 @@ class Navigation extends React.Component {
         // let diffDays = now.getDate() - date.getDate();
         // return diffDays;
     }
-    dateChange (date, index){
+    //Function called when date is changed from calendar
+    dateChange (date, id){
         let campaigns = [...this.state.campaigns]
-        campaigns[index]['createdOn'] = Number(date)
+        campaigns[id]['createdOn'] = Number(date)
 
+        //parseCampaigns: After date is changed, parse again for new formatting to desired date format and calculating duration
         this.setState({
             campaigns: this.parseCampaigns(campaigns)
         })
-        let campaign = {...campaigns[index]}
+        let campaign = {...campaigns[id]}
         delete campaign.datePrint
         delete campaign.duration
         delete campaign.index
-        Firebase.database().ref('campaigns/' + index).set(campaign);
+        //Push updated date to database.
+        Firebase.database().ref('campaigns/' + id).set(campaign);
     }
     render(){
+        //TABS SET AS PER CAMPAIGN TYPE, Which is dependent on campaign duration.
         const panes = [
             {
                 menuItem: Strings.upcoming_campaigns, render: () => <Tab.Pane>
@@ -100,13 +102,14 @@ class Navigation extends React.Component {
 
         return(
             <div className="navigation-container">
-            {
-                this.state.loading
-                ?
-                <Loader active inline='centered' />
-                :
-                <Tab menu={{ color: 'orange', secondary: true, pointing: true }} panes={panes} />
-            }
+                <h1>{Strings.manage_campaigns}</h1>
+                {
+                    this.state.loading
+                    ?
+                    <Loader active inline='centered' />
+                    :
+                    <Tab menu={{ color: 'orange', secondary: true, pointing: true }} panes={panes} />
+                }
             </div>
         )
     }

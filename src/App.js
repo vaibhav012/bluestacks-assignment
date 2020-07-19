@@ -7,17 +7,20 @@ import Strings from './helpers/localization.js'
 class App extends React.Component {
     constructor(props){
         super(props);
+        //Initial Default Language Initialised
         this.state = {
             language: 'en'
         }
         this.setLanguage = this.setLanguage.bind(this);
     }
     componentDidMount(){
+        //Check if previously stored language is stored in storage. If YES? Change language accordingly.
         let lang = localStorage.getItem('language')
         if(lang){
             this.setLanguage(undefined, {value:lang})
         }
     }
+    //Function to Change Language when selected from dropdown.
     setLanguage(e, data){
         Strings.setLanguage(data.value);
         localStorage.setItem('language', data.value);
@@ -30,7 +33,6 @@ class App extends React.Component {
             <div className="App">
                 <Header setLanguage={this.setLanguage} language={this.state.language}/>
                 <div className="body-container">
-                    <h1>{Strings.manage_campaigns}</h1>
                     <Navigation/>
                 </div>
             </div>

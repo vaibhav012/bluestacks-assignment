@@ -1,26 +1,26 @@
+/* STYLES FOR VARIOUS TEXTS IN CAMPAIGN ROW */
 .campaign-date{
     margin: 0;
 }
 .campaign-duration{
     margin: 0;
     font-size: .8rem;
-    color: #999;
 }
 .campaign-name{
     margin: 0;
+    color: #556789;
 }
-.campaign-region{
-    color: #999;
+.campaign-duration, .campaign-region{
+    font-style: italic;
 }
-.campaign-pricing, .campaign-csv, .campaign-report, .campaign-schedule{
-    /* font-size: .8rem; */
-    color: #999;
+.campaign-duration, .campaign-region, .campaign-pricing, .campaign-csv, .campaign-report, .campaign-schedule{
+    color: #7788a3;
 }
 .campaign-pricing:hover, .campaign-csv:hover, .campaign-report:hover, .campaign-schedule:hover{
-    /* font-size: .8rem; */
     cursor: pointer;
     color: black;
 }
+/* STYLE FOR  CAMPAIGN IMAGE */
 .campaign-image{
     height: 30px;
     display: inline-block;
@@ -29,6 +29,7 @@
     margin-left: 10px;
     display: inline-block;
 }
+
 .campaign-inline-icons{
     height: 20px;
     vertical-align: bottom;
@@ -44,8 +45,36 @@
 .campaign-csv:first-child .campaign-inline-icons{
     margin-left: 0px;
 }
+/* CUSTOMISING DEFAULT SEMANTIC DATEPICKER */
 .react-datepicker-wrapper{
     display: inline-block;
+}
+#table-large, #table-small{
+    border-radius: 0;
+    box-shadow: 0px 5px 5px 2px #EEE;
+}
+/* !important had to be used at many places to override semantic UI defaults. */
+th{
+    color: #556789 !important;
+}
+.navigation-container a{
+    color: #556789 !important;
+}
+/* STYLE FOR RESPONSIVE TABLE */
+#table-small{
+    display: none
+}
+#table-small td{
+    display: flex !important;
+    justify-content: space-between;
+}
+#table-small th{
+    display: flex !important;
+    justify-content: space-between;
+}
+/* STYLES FOR CAMPAIGN PRICING POPUP */
+.campaign-pricing-name{
+    font-weight: bold;
 }
 .campaign-pricing-image{
     display: inline-block;
@@ -76,4 +105,17 @@
     width: 100px;
     text-align: center;
     margin: 50px auto 0 auto;
+}
+.campaign-pricing-close-button:hover{
+    background: black;
+    color: #fff;
+    cursor: pointer;
+}
+@media (max-width: 768px){
+    #table-small{
+        display: block;
+    }
+    #table-large{
+        display: none;
+    }
 }

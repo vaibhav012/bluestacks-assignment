@@ -18,9 +18,4 @@
 @media (max-width: 768px){
 }
 @media (max-width: 640px){
-    .header-icon{
-        margin: 0 auto;
-        float: unset;
-        display: block;
-    }
 }
